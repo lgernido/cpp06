@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciegernidos <luciegernidos@student.42    +#+  +:+       +#+        */
+/*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:02:35 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/05/29 16:18:23 by luciegernid      ###   ########.fr       */
+/*   Updated: 2024/06/06 14:35:15 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,31 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 
 void ScalarConverter::convert(std::string const str)
 {
-    if (str.length() == 3 && str[0] == '\'' && str[2] == '\'') 
+    if (str.length() == 1) 
     {
-        char charValue = str[1];
-        std::cout << "char: '" << charValue << "'" << std::endl;
+        int charToInt = 0;
+        if (!isdigit(str[0]))
+            charToInt = static_cast<int>(str[0]);
+        if (!isprint(charToInt))
+        {
+            std::cout << "char: Non displayable" << std::endl;          
+        }
+        else
+        {
+            char charValue = static_cast<char>(charToInt);
+            std::cout << "char: '" << charValue << "'" << std::endl;
+        }
     }
-    else 
+    else
     {
+        if (isprint(str[0]))
+        
         std::cout << "char: impossible" << std::endl;
     }
-
         // Convert to int
     try 
     {
-        int intValue = std::stoi(str);
+        int intValue = static_cast<int>(atoi(str.c_str()));
         std::cout << "int: " << intValue << std::endl;
     } 
     catch (std::invalid_argument&) 
@@ -90,7 +101,7 @@ void ScalarConverter::convert(std::string const str)
         }
         else 
         {
-            floatValue = std::stof(str);
+            floatValue = static_cast<float>(atof(str.c_str()));
         }
         std::cout << std::fixed << std::setprecision(1);
         std::cout << "float: " << floatValue << "f" << std::endl;
@@ -122,7 +133,7 @@ void ScalarConverter::convert(std::string const str)
             } 
             else 
             {
-                doubleValue = std::stod(str);
+                doubleValue = static_cast<double>(strtod(str.c_str(), NULL));
             } 
             std::cout << std::fixed << std::setprecision(1);
             std::cout << "double: " << doubleValue << std::endl;

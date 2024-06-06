@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciegernidos <luciegernidos@student.42    +#+  +:+       +#+        */
+/*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:03:21 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/05/29 11:46:11 by luciegernid      ###   ########.fr       */
+/*   Updated: 2024/06/06 11:38:53 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <ctype.h>
 
 #define RED		"\033[0;31m"
 #define GREEN	"\033[0;32m"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciegernidos <luciegernidos@student.42    +#+  +:+       +#+        */
+/*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:44:26 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/05/29 21:09:17 by luciegernid      ###   ########.fr       */
+/*   Updated: 2024/06/06 12:01:36 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int argc, char **argv)
         std::cout << "Error: Wrong number of arguments" << std::endl;
         return (1);
     }
-    // Get fundamental scalar and build Cast object with him
     std::string inputString = argv[1];
     ScalarConverter castedString;
 

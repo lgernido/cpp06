@@ -18,7 +18,7 @@ DEP_FILES = $(OBJ_FILES:.o=.d)
 ###########################################################################
 #### ARGUMENTS
 
-NAME		= a.out
+NAME		= convert
 CC			= c++
 CFLAGS		= -Wall -Werror -Wextra -MMD -g3 -std=c++98
 

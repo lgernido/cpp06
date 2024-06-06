@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciegernidos <luciegernidos@student.42    +#+  +:+       +#+        */
+/*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:06:05 by lgernido          #+#    #+#             */
-/*   Updated: 2024/06/05 18:44:49 by luciegernid      ###   ########.fr       */
+/*   Updated: 2024/06/06 10:10:29 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Serializer::~Serializer()
 //Copy constructor
 Serializer::Serializer(const Serializer& other)
 {
+    (void)other;
     std::cout << BOLD << "Serializer" << RESET << ITALIC << " copy constructor called" << std::endl;
     std::cout << std::endl;
 }
@@ -38,7 +39,8 @@ Serializer::Serializer(const Serializer& other)
 /*ASSIGNMENT OPERATOR*/
 Serializer& Serializer::operator=(const Serializer &other)
 {
-    
+    (void)other;
+    return (*this);
 }
 
 /*PUBLIC METHODS*/

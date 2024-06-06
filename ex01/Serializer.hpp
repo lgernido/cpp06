@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:05:01 by lgernido          #+#    #+#             */
-/*   Updated: 2024/06/05 10:45:34 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:09:31 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@
 
 #include <string>
 #include <iostream>
+#include <stdint.h>
 
-typedef struct Data
+typedef struct
 {
-    int nb;
+    int integer;
     float floater;
-};
+} Data;
 
 class Serializer
 {
@@ -52,7 +53,7 @@ class Serializer
 
         Serializer& operator=(const Serializer &other);
     
-}
+};
 
 
 

@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:02:35 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/06/06 14:35:15 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/07 08:19:20 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,19 @@ void ScalarConverter::convert(std::string const str)
     }
     else
     {
-        if (isprint(str[0]))
+        int num = atoi(str.c_str());
         
-        std::cout << "char: impossible" << std::endl;
+        if (num >= 0 && num <= 127 && isprint(static_cast<char>(num)))
+        {
+            char charValue = static_cast<char>(num);
+            std::cout << "char: '" << charValue << "'" << std::endl;
+        }
+        else
+        {
+            std::cout << "char: impossible" << std::endl;
+        }
     }
+
         // Convert to int
     try 
     {

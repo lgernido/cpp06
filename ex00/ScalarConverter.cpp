@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:02:35 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/06/11 10:09:34 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:42:06 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,58 @@ void ScalarConverter::convert(std::string const str)
         }
     }
 
-        // Convert to int
+    // Convert to int
+    if (str.length() == 1)
+    {
+        if (str[0] >= '0' && str[0] <= '9')
+            std::cout << "int: " << str << std::endl;
+        else         
+        { 
+            int strToInt = static_cast<int>(str[0]);    
+            std::cout << "int: " << strToInt << std::endl;          
+        }  
+    }
+    else
+    {
+        bool error = false;
+        for (size_t i = 0; i < str.length(); i++)
+        {
+            if (!isdigit(str[i]))
+            {
+                std::cout << "int: impossible" << std::endl;
+                error = true;
+                break;
+            }
+        }
+        if (error == false)
+        {
+            int intValue = static_cast<int>(atoi(str.c_str()));
+            std::cout << "int: " << intValue << std::endl;             
+        }
+    }
+
+    // Convert to float
+    if (str == "-inff") 
+    {
+        std::cout << "float: " << "-inf" << "f" << std::endl;
+    }
+    else if (str == "+inff") 
+    {
+        std::cout << "float: " << "inf" << "f" << std::endl;
+    } 
+    else if (str == "nanf") 
+    {  
+        std::cout << "float: " << "nan" << "f" << std::endl;
+    }
+    else 
+    {
         if (str.length() == 1)
         {
             if (str[0] >= '0' && str[0] <= '9')
-                std::cout << "int: " << str << std::endl;
+                std::cout << "float: " << str << "f" << std::endl;
             else         
-            { 
-                int strToInt = static_cast<int>(str[0]);    
-                std::cout << "int: " << strToInt << std::endl;          
+            {  
+                std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(str[0]) << "f" << std::endl;          
             }  
         }
         else
@@ -96,107 +139,59 @@ void ScalarConverter::convert(std::string const str)
             {
                 if (!isdigit(str[i]))
                 {
-                    std::cout << "int: impossible" << std::endl;
+                    std::cout << "float: impossible" << std::endl;
                     error = true;
                     break;
                 }
             }
             if (error == false)
             {
-                int intValue = static_cast<int>(atoi(str.c_str()));
-                std::cout << "int: " << intValue << std::endl;             
+                std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(str.c_str())) << "f" << std::endl;           
             }
         }
+    }
 
-        // Convert to float
-        if (str == "-inff") 
-        {
-            std::cout << "float: " << "-inf" << "f" << std::endl;
-        }
-        else if (str == "+inff") 
-        {
-            std::cout << "float: " << "inf" << "f" << std::endl;
-        } 
-        else if (str == "nanf") 
-        {  
-            std::cout << "float: " << "nan" << "f" << std::endl;
-        }
-        else 
-        {
-            if (str.length() == 1)
-            {
-                if (str[0] >= '0' && str[0] <= '9')
-                    std::cout << "float: " << str << "f" << std::endl;
-                else         
-                { 
-                    int strToFloat = static_cast<float>(str[0]);    
-                    std::cout << "float: " << strToFloat << std::endl;          
-                }  
-            }
-            else
-            {
-                bool error = false;
-                for (size_t i = 0; i < str.length(); i++)
-                {
-                    if (!isdigit(str[i]))
-                    {
-                        std::cout << "float: impossible" << std::endl;
-                        error = true;
-                        break;
-                    }
-                }
-                if (error == false)
-                {
-                    int floatValue = static_cast<float>(atof(str.c_str()));
-                    std::cout << "float: " << floatValue << std::endl;             
-                }
-            }
-        }
+    // Convert to double
 
-        // Convert to double
-
-        if (str == "-inf") 
+    if (str == "-inf") 
+    {
+            std::cout << "double: " << "-inf" << std::endl;
+    } 
+    else if (str == "+inf") 
+    {
+        std::cout << "double: " << "inf" << std::endl;
+    } 
+    else if (str == "nan") 
+    {
+        std::cout << "double: " << "nan" << std::endl;
+    } 
+    else 
+    {
+        if (str.length() == 1)
         {
-                std::cout << "double: " << "-inf" << std::endl;
-        } 
-        else if (str == "+inf") 
+            if (str[0] >= '0' && str[0] <= '9')
+                std::cout << "double: " << str << std::endl;
+            else         
+            {   
+                std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(str[0]) << std::endl;           
+            }  
+        }
+        else
         {
-             std::cout << "double: " << "inf" << std::endl;
-        } 
-        else if (str == "nan") 
-        {
-            std::cout << "double: " << "nan" << std::endl;
-        } 
-        else 
-        {
-            if (str.length() == 1)
+            bool error = false;
+            for (size_t i = 0; i < str.length(); i++)
             {
-                if (str[0] >= '0' && str[0] <= '9')
-                    std::cout << "double: " << str << std::endl;
-                else         
-                { 
-                    int strToDouble = static_cast<double>(str[0]);    
-                    std::cout << "double: " << strToDouble << std::endl;          
-                }  
+                if (!isdigit(str[i]))
+                {
+                    std::cout << "double: impossible" << std::endl;
+                    error = true;
+                    break;
+                }
             }
-            else
+            if (error == false)
             {
-                bool error = false;
-                for (size_t i = 0; i < str.length(); i++)
-                {
-                    if (!isdigit(str[i]))
-                    {
-                        std::cout << "float: impossible" << std::endl;
-                        error = true;
-                        break;
-                    }
-                }
-                if (error == false)
-                {
-                    int doubleValue = static_cast<double>(strtod(str.c_str(), NULL));
-                    std::cout << std::fixed << std::setprecision(1);
-                    std::cout << "double: " << doubleValue << std::endl;             
-                }
+                std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(strtod(str.c_str(), NULL)) << std::endl;  
             }
         }
-}
+    }
+}           

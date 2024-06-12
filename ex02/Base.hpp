@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:47:51 by lgernido          #+#    #+#             */
-/*   Updated: 2024/06/06 10:35:20 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/12 09:49:44 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ class Base
     private :
 };
 
-        Base * generate(void);
-        void identify(Base* p);
-        void identify(Base& p);
+Base * generate(void);
+void identify(Base* p);
+void identify(Base& p);
+
 class A : public Base{};
 class B : public Base{};
 class C : public Base{};

@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:48:38 by lgernido          #+#    #+#             */
-/*   Updated: 2024/06/06 10:40:46 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:13:14 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ Base* generate(void)
         init = true;
     }
     int i = std::rand() % 3;
-    std::cout << rand() << std::endl; 
     if (i == 0)
         return (new A);
     else if (i == 1)

@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:05:01 by lgernido          #+#    #+#             */
-/*   Updated: 2024/06/06 10:09:31 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/12 09:48:23 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ class Serializer
 
         static uintptr_t serialize(Data* ptr);
         static Data* deserialize(uintptr_t raw);
+        ~Serializer();
 
     protected :
 
     private : 
         Serializer();
-        ~Serializer();
         
         Serializer(const Serializer& other);
 

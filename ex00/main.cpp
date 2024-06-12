@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:44:26 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/06/06 12:01:36 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/12 09:43:35 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int main(int argc, char **argv)
         return (1);
     }
     std::string inputString = argv[1];
-    ScalarConverter castedString;
-
-    castedString.convert(inputString);
+    ScalarConverter::convert(inputString);
 
     return (0);
 }

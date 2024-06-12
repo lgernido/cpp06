@@ -6,7 +6,7 @@
 /*   By: lgernido <lgernido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:02:35 by luciegernid       #+#    #+#             */
-/*   Updated: 2024/06/11 13:42:06 by lgernido         ###   ########.fr       */
+/*   Updated: 2024/06/12 09:38:46 by lgernido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,40 @@ ScalarConverter::ScalarConverter(const ScalarConverter& other)
 /*ASSIGNMENT OPERATOR*/
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 {
-    if (this == &other)
-        return (*this);
+    (void)other;
     return (*this);
 }
 
 /*PUBLIC METHODS*/
+
+bool parseNumber(const std::string& s) 
+{
+    bool hasDecimalPoint = false;
+    bool hasDigits = false;
+    size_t start = (s[0] == '-' || s[0] == '+') ? 1 : 0;
+
+    for (size_t i = start; i < s.length(); ++i)
+     {
+        if (std::isdigit(s[i])) 
+        {
+            hasDigits = true;
+        } 
+        else if (s[i] == '.') 
+        {
+            if (hasDecimalPoint) return false;
+            hasDecimalPoint = true;
+        } 
+        else if (s[i] == 'f' && i == s.length() - 1 && hasDigits) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    return hasDigits;
+}
 
 void ScalarConverter::convert(std::string const str)
 {
@@ -89,6 +117,10 @@ void ScalarConverter::convert(std::string const str)
             std::cout << "int: " << strToInt << std::endl;          
         }  
     }
+    else if (parseNumber(str))
+    {
+        std::cout << "int: " << static_cast<int>(atoi(str.c_str())) << std::endl;
+    }
     else
     {
         bool error = false;
@@ -109,17 +141,21 @@ void ScalarConverter::convert(std::string const str)
     }
 
     // Convert to float
-    if (str == "-inff") 
+    if (str == "-inff" || str == "-inf") 
     {
         std::cout << "float: " << "-inf" << "f" << std::endl;
     }
-    else if (str == "+inff") 
+    else if (str == "+inff" || str == "+inf") 
     {
         std::cout << "float: " << "inf" << "f" << std::endl;
     } 
-    else if (str == "nanf") 
+    else if (str == "nan" || str == "nanf") 
     {  
         std::cout << "float: " << "nan" << "f" << std::endl;
+    }
+    else if (parseNumber(str))
+    {
+        std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(str.c_str())) << "f" << std::endl;
     }
     else 
     {
@@ -153,18 +189,22 @@ void ScalarConverter::convert(std::string const str)
 
     // Convert to double
 
-    if (str == "-inf") 
+    if (str == "-inf" || str == "-inff") 
     {
-            std::cout << "double: " << "-inf" << std::endl;
+        std::cout << "double: " << "-inf" << std::endl;
     } 
-    else if (str == "+inf") 
+    else if (str == "+inf" || str == "+inff") 
     {
         std::cout << "double: " << "inf" << std::endl;
     } 
-    else if (str == "nan") 
+    else if (str == "nan" || str == "nanf") 
     {
         std::cout << "double: " << "nan" << std::endl;
-    } 
+    }
+    else if (parseNumber(str))
+    {
+        std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(strtod(str.c_str(), NULL)) << std::endl;
+    }
     else 
     {
         if (str.length() == 1)
